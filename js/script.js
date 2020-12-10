@@ -43,11 +43,7 @@
 		}
 	}
 	
-	//valida o array
-	/*
-	 * o sistema conta uma inversão ao comparar o valor do índice i com os seguintes e identificar valores menores
-	 * Caso o array apresente um número ímpar de inversões, o sistema é insolucionável
-	 * */
+	//valida o array	
 	function validGame(array){
 		var inversions = 0;
 		var len = array.length;
@@ -61,31 +57,23 @@
 		return inversions % 2 === 0;
 	}
 	
-	//ordenação aleatória do array
+	//ordenação do array
 	function randomSort(oldArray){
 		var newArray = [];
-		newArray.push(oldArray[1]);
+		newArray.push(oldArray[0]);
 		newArray.push(oldArray[3]);
 		newArray.push(oldArray[6]);
 		newArray.push(oldArray[5]);
-		newArray.push(oldArray[0]);
+		newArray.push(oldArray[1]);
 		newArray.push(oldArray[4]);
 		newArray.push(oldArray[2]);
 		newArray.push(oldArray[7]);
-		// do{
-		// 	var newArray = [];
-		// 	while(newArray.length < oldArray.length){
-		// 		var i = Math.floor(Math.random() * oldArray.length);
-		// 		if(newArray.indexOf(oldArray[i]) < 0){
-		// 			newArray.push(oldArray[i]);
-		// 		}
-		// 	}
-		// }while(!validGame(newArray));
+		
 		
 		return newArray;
 	}
 	
-	//função que inicia o jogo embaralhando o array e desabilitando a tela inicial
+	//função que inicia o jogo removendo a tela inicial e ordenando conforme fixado
 	function startGame(){
 		tiles = randomSort(tiles);
 		this.removeEventListener("click",startGame,false);
@@ -94,10 +82,10 @@
 		render();
 	}
 	
+	//mover as peças com verificação das bordas
 	function moveTile(){
 		var index = tiles.indexOf(this);
-		
-		//confere se a peça não está na coluna da esquerda
+				
 		if(index % 3 !== 0){
 			//move a peça para a esquerda, caso o espaço esteja vazio
 			if(!tiles[index-1]){
@@ -105,8 +93,7 @@
 				tiles[index] = null;
 			}
 		}
-		
-		//confere se a peça não está na coluna da esquerda
+				
 		if(index % 3 !== 2){
 			//move a peça para a direita, caso o espaço esteja vazio
 			if(!tiles[index+1]){
@@ -114,8 +101,7 @@
 				tiles[index] = null;
 			}
 		}
-		
-		//confere se a peça não está na coluna do topo
+				
 		if(index > 2){
 			//move a peça para o topo, caso o espaço esteja vazio
 			if(!tiles[index-3]){
@@ -123,8 +109,7 @@
 				tiles[index] = null;
 			}
 		}
-		
-		//confere se a peça não está na coluna do fundo
+				
 		if(index < 6){
 			//move a peça para baixo, caso o espaço esteja vazio
 			if(!tiles[index+3]){
