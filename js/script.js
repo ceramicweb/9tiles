@@ -61,13 +61,13 @@
 	function randomSort(oldArray){
 		var newArray = [];
 		newArray.push(oldArray[0]);
-		newArray.push(oldArray[3]);
-		newArray.push(oldArray[6]);
-		newArray.push(oldArray[5]);
-		newArray.push(oldArray[1]);
-		newArray.push(oldArray[4]);
 		newArray.push(oldArray[2]);
+		newArray.push(oldArray[4]);
+		newArray.push(oldArray[3]);
+		newArray.push(oldArray[5]);
 		newArray.push(oldArray[7]);
+		newArray.push(oldArray[6]);
+		newArray.push(oldArray[1]);
 		
 		
 		return newArray;
